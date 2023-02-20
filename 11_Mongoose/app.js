@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 
 const express = require('express');
@@ -35,7 +36,7 @@ app.use(errorController.get404);
 
 mongoose
   .connect(
-    'mongodb+srv://rakesh:Rakeshmongo2022@clusters.3pmsnr7.mongodb.net/shop?retryWrites=true&w=majority'
+    process.env.MONGODB_URI,
   )
   .then(result => {
     User.findOne().then(user => {
